@@ -1,0 +1,14 @@
+.CriminalList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-between;
+}
+
+.criminal {
+    border: 1px dotted black;
+    margin: 1rem;
+    padding: 0.5rem;
+    flex-basis: 25%;
+
+}
