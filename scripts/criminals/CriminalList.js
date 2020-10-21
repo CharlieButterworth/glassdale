@@ -4,23 +4,34 @@ import { Criminal } from "./Criminals.js"
 
 const eventHub = document.querySelector(".container")
 // Listen for the custom event you dispatched in ConvictionSelect
-eventHub.addEventListener("crimeChosen", event => {
+eventHub.addEventListener("crimeSelected", event => {
+    console.log("event", event.detail.crimeThatWasChosen)
     // Use the property you added to the event detail.
     // if (changeEvent.detail.crimeThatWasChosen !== "0"){
         /*
             Filter the criminals application state down to the people that committed the crime
         */
-       const criminalArray = useCriminals()
+       const criminalsArray = useCriminals()
       const convictionsArray = useConvictions()
+      console.log("Convictions Array", convictionsArray)
 
-      const convictionThatWasChosen = convictionsArray.find(convictionObj => {
-            return convictionObj.id === event.detail.crimeThatWasChosen
-        })
+      const convictionThatWasChosen = convictionsArray.find(convictionObj =>  convictionObj.id === parseInt(event.detail.crimeThatWasChosen))
+          
+            
+      
+console.log(convictionThatWasChosen)
 
-const filteredCriminalsArray = criminalArray.filter(criminalObj => {
+const filteredCriminalsArray = criminalsArray.filter(criminalObj => {
+    
     return criminalObj.conviction === convictionThatWasChosen.name
 
 })
+
+
+
+console.log(filteredCriminalsArray)
+
+console.log("convictionWasChosen", convictionThatWasChosen)
 let criminalsHTMLRepresentions = ""
 for (const criminal of filteredCriminalsArray) {
 
