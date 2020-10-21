@@ -2,7 +2,7 @@ import { useOfficers } from "./OfficerProivder.js"
 import { getOfficers } from "./OfficerProivder.js"
 import { Officer } from "./Officer.js"
 
-
+const eventHub = document.querySelector(".container")
 const officersContainer = document.querySelector(".officersContainer")
 
 export const OfficerList = () => {
@@ -25,8 +25,6 @@ export const OfficerList = () => {
                     `
             }
         })
+    }
 
-
-
-
-}
+    

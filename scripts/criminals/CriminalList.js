@@ -1,13 +1,28 @@
 import { useConvictions } from "../convictions/ConvictionProvider.js"
+import { OfficerSelect } from "../officers/OfficerSelect.js"
 import { getCriminals, useCriminals } from "./CriminalProvider.js"
 import { Criminal } from "./Criminals.js"
 
 const eventHub = document.querySelector(".container")
 // Listen for the custom event you dispatched in ConvictionSelect
-eventHub.addEventListener("crimeSelected", event => {
-    console.log("event", event.detail.crimeThatWasChosen)
+
+    // console.log("event", changeEvent.detail.crimeThatWasChosen)
     // Use the property you added to the event detail.
-    // if (changeEvent.detail.crimeThatWasChosen !== "0"){
+    const criminalsContainer = document.querySelector(".criminalsContainer")
+
+   export const CriminalList = () => {
+        
+    getCriminals()
+    .then(() => {
+        const criminalArray = useCriminals()
+        render(criminalArray)
+
+    })
+}
+
+eventHub.addEventListener("crimeSelected", event => {
+
+    if (event.detail.crimeThatWasChosen !== 0) {
         /*
             Filter the criminals application state down to the people that committed the crime
         */
@@ -17,58 +32,51 @@ eventHub.addEventListener("crimeSelected", event => {
 
       const convictionThatWasChosen = convictionsArray.find(convictionObj =>  convictionObj.id === parseInt(event.detail.crimeThatWasChosen))
           
-            
-      
-console.log(convictionThatWasChosen)
+        console.log(convictionThatWasChosen)
+
+    }
+
+        // Filtering through the criminals array
 
 const filteredCriminalsArray = criminalsArray.filter(criminalObj => {
     
     return criminalObj.conviction === convictionThatWasChosen.name
+})
+    render(filteredCriminalsArray)
+
+
 
 })
 
 
+eventHub.addEventListener("officerSelected", OfficerSelectedEventObj => {
+    console.log(OfficerSelectedEventObj)
 
-console.log(filteredCriminalsArray)
+    const selectedOfficerName = OfficerSelectedEventObj.detail.officerName
+    console.log(selectedOfficerName)
 
-console.log("convictionWasChosen", convictionThatWasChosen)
-let criminalsHTMLRepresentions = ""
-for (const criminal of filteredCriminalsArray) {
+    const criminalsArray = useCriminals()
 
-    criminalsHTMLRepresentions += Criminal(criminal)
 
-    criminalsContainer.innerHTML = `
-    <h3>Glassdale Criminals</h3>
-    <section class="criminalsList">
-    ${criminalsHTMLRepresentions}
-    </section>
-    
-    `
-}
+    const filteredArrayCriminals = criminalsArray.filter(
+        (criminalObj) => {
+            return criminalObj.arrestingOfficer === selectedOfficerName
+        }
+    )
+    console.log(filteredArrayCriminals)
+
+
+    render(filteredArrayCriminals)
 })
+// const criminalsContainer = document.querySelector(".criminalsContainer")
 
-
-
-
-
-// Render ALL criminals initally
 // export const CriminalList = () => {
-//     getCriminals()
-//         .then(() => {
-//             const appStateCriminals = useCriminals()
-//             render(appStateCriminals)
-//         })
-// }
 
+// getCriminals()
+//     .then(() => {
+//         const criminalArray = useCriminals()
 
-
-const criminalsContainer = document.querySelector(".criminalsContainer")
-
-export const CriminalList = () => {
-
-getCriminals()
-    .then(() => {
-        const criminalArray = useCriminals()
+const render = (criminalArray) => {
 
         let criminalsHTMLRepresentions = ""
         for (const criminal of criminalArray) {
@@ -84,5 +92,5 @@ getCriminals()
             
             `
         }
-    })
 }
+    
