@@ -1,3 +1,5 @@
+import { NoteForm } from "../notes/NoteForm.js";
+import { NoteList } from "../notes/NoteList.js";
 import { ConvictionSelect } from "./convictions/ConvictionSelect.js";
 import { CriminalList } from "./criminals/CriminalList.js";
 
@@ -9,3 +11,5 @@ OfficerList()
 CriminalList()
 ConvictionSelect()
 OfficerSelect()
+NoteForm()
+NoteList()
