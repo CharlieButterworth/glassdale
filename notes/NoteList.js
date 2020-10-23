@@ -11,11 +11,13 @@ import { getNotes, useNotes } from "./NotesProvider.js"
 const notesContainer = document.querySelector(".notesContainer");
 const eventHub = document.querySelector(".container")
 
+eventHub.addEventListener("noteStateChanged", () => NoteList())
+
 export const NoteList = () => {
     getNotes()
     .then(() => {
         const allNotes = useNotes()
-        // Render(allNotes)
+        render(allNotes)
     })
 }
 console.log(NoteList)
