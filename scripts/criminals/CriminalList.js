@@ -37,10 +37,10 @@ eventHub.addEventListener("crimeSelected", event => {
     }
 
         // Filtering through the criminals array
-
+        const criminalsArray = useCriminals()
 const filteredCriminalsArray = criminalsArray.filter(criminalObj => {
     
-    return criminalObj.conviction === convictionThatWasChosen.name
+    return criminalObj.conviction === criminalsArray.name
 })
     render(filteredCriminalsArray)
 
