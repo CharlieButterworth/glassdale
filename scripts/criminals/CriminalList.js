@@ -8,7 +8,7 @@ const eventHub = document.querySelector(".container")
 
     // console.log("event", changeEvent.detail.crimeThatWasChosen)
     // Use the property you added to the event detail.
-    const criminalsContainer = document.querySelector(".criminalsContainer")
+    const criminalsContainer = document.querySelector(".caseDataContainer")
 
    export const CriminalList = () => {
         
@@ -26,7 +26,7 @@ eventHub.addEventListener("crimeSelected", event => {
         /*
             Filter the criminals application state down to the people that committed the crime
         */
-       const criminalsArray = useCriminals()
+    //    const criminalsArray = useCriminals()
       const convictionsArray = useConvictions()
       console.log("Convictions Array", convictionsArray)
 
@@ -40,7 +40,7 @@ eventHub.addEventListener("crimeSelected", event => {
         const criminalsArray = useCriminals()
 const filteredCriminalsArray = criminalsArray.filter(criminalObj => {
     
-    return criminalObj.conviction === criminalsArray.name
+    return criminalObj.conviction === convictionThatWasChosen.name
 })
     render(filteredCriminalsArray)
 
@@ -68,13 +68,7 @@ eventHub.addEventListener("officerSelected", OfficerSelectedEventObj => {
 
     render(filteredArrayCriminals)
 })
-// const criminalsContainer = document.querySelector(".criminalsContainer")
 
-// export const CriminalList = () => {
-
-// getCriminals()
-//     .then(() => {
-//         const criminalArray = useCriminals()
 
 const render = (criminalArray) => {
 

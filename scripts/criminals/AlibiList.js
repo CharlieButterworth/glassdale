@@ -6,7 +6,7 @@ import { useCriminals } from "./CriminalProvider.js"
 const eventHub = document.querySelector(".container")
 
 export const createAlibiEventListener = () => {
-    debugger
+
 eventHub.addEventListener("alibiButtonClicked", (eventObj) => {
     console.log("Event Listener", eventObj.detail.criminalId)
 

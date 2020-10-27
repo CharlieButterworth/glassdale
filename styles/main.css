@@ -6,7 +6,7 @@
     
 }
 
-.criminalsContainer {
+.criminalsContainer, .witness {
     border: 1px dotted black;
     margin: 1rem;
     padding: 0.5rem;
@@ -14,8 +14,18 @@
 
 }
 
+
+
 .investigation {
     display: flex;
+}
+
+.criminalsContainer {
+    flex: 3
+}
+
+.notesContainer {
+    flex: 1
 }
 
 
