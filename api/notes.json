@@ -7,7 +7,22 @@
       "suspect": "Clown",
       "note": "Clowns are the worst.",
       "id": 1
+    },
+    {
+      "dateOfInterview": "2020-10-27",
+      "timestamp": 1603734891828,
+      "author": "Charlie",
+      "suspect": "Cam",
+      "note": "This is sweet.",
+      "id": 2
+    },
+    {
+      "dateOfInterview": "2020-10-27",
+      "timestamp": 1603734896628,
+      "author": "Charlie",
+      "suspect": "Cam",
+      "note": "This is sweet.",
+      "id": 3
     }
-    
   ]
 }
