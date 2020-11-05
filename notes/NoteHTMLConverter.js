@@ -1,11 +1,10 @@
-export const NoteAsHTML = (noteObj) => {
+export const NoteAsHTML = (noteObj, criminalObj) => {
     return `
     <div class="note">
-    <h5>Author: ${noteObj.author}</h5>
-    <p>Suspect: ${noteObj.suspect}</p>
+    <h5> Officer: ${noteObj.author}</h5>
+    <p> Criminal: ${criminalObj.name}</p>
     <p>Date of Interview: ${noteObj.dateOfInterview}</p>
-    <p>Time Note Entered: ${new Date(noteObj.timestamp).toLocaleDateString('en-US')}</p>
-    <p>Note: ${noteObj.note}</p>
+    <p id="note--id">Note: ${noteObj.noteText}</p>
 </div>
     `
 }
