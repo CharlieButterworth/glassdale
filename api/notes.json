@@ -1,28 +1,11 @@
 {
   "notes": [
     {
-      "dateOfInterview": "10/22/20",
-      "timestamp": "9999",
-      "author": "Charlie",
-      "suspect": "Clown",
-      "note": "Clowns are the worst.",
+      "noteText": "Here is the note for the notes.",
+      "criminalId": 3,
+      "dateOfInterview": "2020-11-06",
+      "author": "Cam",
       "id": 1
-    },
-    {
-      "dateOfInterview": "2020-10-27",
-      "timestamp": 1603734891828,
-      "author": "Charlie",
-      "suspect": "Cam",
-      "note": "This is sweet.",
-      "id": 2
-    },
-    {
-      "dateOfInterview": "2020-10-27",
-      "timestamp": 1603734896628,
-      "author": "Charlie",
-      "suspect": "Cam",
-      "note": "This is sweet.",
-      "id": 3
     }
   ]
 }
