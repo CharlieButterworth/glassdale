@@ -1,11 +1,18 @@
 {
   "notes": [
     {
-      "noteText": "Here is the note for the notes.",
-      "criminalId": 3,
+      "noteText": "Hello. this works and Im pumped! ",
+      "criminalId": 1,
       "dateOfInterview": "2020-11-06",
+      "author": "Camden",
+      "id": 2
+    },
+    {
+      "noteText": "HERE",
+      "criminalId": 3,
+      "dateOfInterview": "2020-11-10",
       "author": "Cam",
-      "id": 1
+      "id": 3
     }
   ]
 }
