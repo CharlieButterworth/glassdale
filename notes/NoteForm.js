@@ -44,7 +44,7 @@ eventHub.addEventListener("click", clickEvent => {
         const criminalId = parseInt(document.querySelector("#criminalselect").value)
         const dateOfInterview = document.querySelector("#note--dateOfInterview").value
         const author = document.querySelector("#note--author").value
-        debugger
+        
         // const suspect = document.querySelector("#note--suspect").value
         // const note = document.querySelector("#note--note").value
         // const timestamp = Date.now()
