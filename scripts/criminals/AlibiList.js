@@ -26,13 +26,13 @@ const AlibiList = (criminalObj) => {
 }
 
 
-const render = (criminalObj) => {
-    const contentTarget = document.querySelector(`#criminal-${criminalObj.id}`)
+const render = (criminalObject) => {
+    
+    const contentTarget = document.querySelector(`#criminal-${criminalObject.id}`)
 
-
-    contentTarget.innerHTML += `
+    contentTarget.innerHTML = `
     <div class="alibi__list">
-        ${criminalObj.known_associates.map(alibiObj => {
+        ${criminalObject.known_associates.map(alibiObj => {
             return `
                 <p>${alibiObj.name}</p>
                 <p>${alibiObj.alibi}</p>

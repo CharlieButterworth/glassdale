@@ -14,6 +14,14 @@
 
 }
 
+.criminal {
+    border: 1px dotted black;
+    margin: 1rem;
+    padding: 0.5rem;
+    flex-basis: 25%;
+    background-color: chartreuse;
+    text-align: center;
+}
 
 
 .investigation {
@@ -31,4 +39,5 @@
 
 .note {
     border: 1px dotted black;
+    background-color: cyan;
 }
