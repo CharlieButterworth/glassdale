@@ -8,18 +8,20 @@ export const displayFacilitiesButton = () => {
 
 const eventHub = document.querySelector(".container")
 
-eventHub.addEventListener("click", clickEvent => {
-    if(clickEvent.target.id === "displayFacility") {
-// console.log("EVENTHUBCLICK", eventHub)
-    const customEvent = new CustomEvent("facilitiesButtonClicked", {
-        detail: {
-            facilityThatWasChosen: clickEvent.target.value
-        }
-    })
-    eventHub.dispatchEvent(customEvent)
+eventHub.addEventListener("click", (clickEvent) => {
+    if (clickEvent.target.id === "facility__button") {
+        // console.log("witness button was clicked")
+    
+    
+    const facilityButton = new CustomEvent("facilitiesButtonClicked")
+    
+        eventHub.dispatchEvent(facilityButton)
     }
+    
+    
+    })
 
-})
+
 
 
 
@@ -35,4 +37,4 @@ eventHub.addEventListener("click", clickEvent => {
 //         // Dispatch to event hub
 //         eventHub.dispatchEvent(customEvent)
 //     }
-// })
+// }

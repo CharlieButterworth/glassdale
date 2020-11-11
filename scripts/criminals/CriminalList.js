@@ -133,5 +133,7 @@ const render = (criminalsToRender, allFacilities, allRelationships) => {
 }
 
 
-// eventHub.addEventListener("facilitiesButtonClicked", )
+eventHub.addEventListener("facilitiesButtonClicked", () => {
+    FacilityList()
+})
     

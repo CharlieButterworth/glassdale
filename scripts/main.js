@@ -11,6 +11,8 @@ import { OfficerList } from "./officers/OfficerList.js";
 import { OfficerSelect } from "./officers/OfficerSelect.js";
 import { renderWitnessButton } from "./Witnesses/WitnessButton.js";
 import "./witnesses/WitnessList.js"
+import "./facility/FacilityList.js"
+import { FacilityList } from "./facility/FacilityList.js";
 
 
 OfficerList()
@@ -25,3 +27,7 @@ getCriminals()
     .then(() => NoteForm())
 displayFacilitiesButton()
 // getFacilities()
+
+FacilityList()
+
+
