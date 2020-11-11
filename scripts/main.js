@@ -4,6 +4,7 @@ import { ConvictionSelect } from "./convictions/ConvictionSelect.js";
 import { createAlibiEventListener } from "./criminals/AlibiList.js";
 import { CriminalList } from "./criminals/CriminalList.js";
 import { getCriminals } from "./criminals/CriminalProvider.js";
+import { displayFacilitiesButton } from "./facility/DisplayFacilityButton.js";
 import { getFacilities } from "./facility/FacilityProvider.js";
 
 import { OfficerList } from "./officers/OfficerList.js";
@@ -22,5 +23,5 @@ createAlibiEventListener()
 renderWitnessButton()
 getCriminals()
     .then(() => NoteForm())
-
+displayFacilitiesButton()
 // getFacilities()

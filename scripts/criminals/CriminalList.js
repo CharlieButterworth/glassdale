@@ -48,21 +48,22 @@ eventHub.addEventListener("crimeSelected", event => {
         */
     //    const criminalsArray = useCriminals()
       const convictionsArray = useConvictions()
-      console.log("Convictions Array", convictionsArray)
+    //   console.log("Convictions Array", convictionsArray)
 
       const convictionThatWasChosen = convictionsArray.find(convictionObj =>  convictionObj.id === parseInt(event.detail.crimeThatWasChosen))
           
-        console.log(convictionThatWasChosen)
-
-    
-
+        // console.log(convictionThatWasChosen)
         // Filtering through the criminals array
         const criminalsArray = useCriminals()
+        
 const filteredCriminalsArray = criminalsArray.filter(criminalObj => {
     
     return criminalObj.conviction === convictionThatWasChosen.name
 })
-    render(filteredCriminalsArray)
+    const fullFacilityArray = useFacilities()
+    const relationshipFullTable = useCriminalFacilities()
+
+    render(filteredCriminalsArray, fullFacilityArray, relationshipFullTable)
 
     }
 
@@ -70,10 +71,10 @@ const filteredCriminalsArray = criminalsArray.filter(criminalObj => {
 
 
 eventHub.addEventListener("officerSelected", OfficerSelectedEventObj => {
-    console.log(OfficerSelectedEventObj)
-
+    // console.log(OfficerSelectedEventObj)
+    if (OfficerSelectedEventObj.detail.crimeThatWasChosen !== 0) {
     const selectedOfficerName = OfficerSelectedEventObj.detail.officerName
-    console.log(selectedOfficerName)
+    // console.log(selectedOfficerName)
 
     const criminalsArray = useCriminals()
 
@@ -83,11 +84,15 @@ eventHub.addEventListener("officerSelected", OfficerSelectedEventObj => {
             return criminalObj.arrestingOfficer === selectedOfficerName
         }
     )
-    console.log(filteredArrayCriminals)
+    // console.log(filteredArrayCriminals)
 
+    const fullFacilityArray = useFacilities()
+    const relationshipFullTable = useCriminalFacilities()
 
-    render(filteredArrayCriminals)
+    render(filteredArrayCriminals, fullFacilityArray, relationshipFullTable)
+    }
 })
+
 
 
 // const render = (criminalArray) => {
@@ -126,4 +131,7 @@ const render = (criminalsToRender, allFacilities, allRelationships) => {
         }
     ).join("")
 }
+
+
+// eventHub.addEventListener("facilitiesButtonClicked", )
     

@@ -31,6 +31,7 @@ const dropdown = arrayOfCriminals.map((criminalObj) => {
     
         <textarea id="note--note" placeholder="Your Note Here"></textarea>
         <button id="saveNote">Save Note</button>
+        
     `
 }
 
