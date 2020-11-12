@@ -1,4 +1,6 @@
 const contentTarget = document.querySelector(".facility__button")
+const eventHub = document.querySelector(".container")
+
 
 export const displayFacilitiesButton = () => {
      return contentTarget.innerHTML = 
@@ -6,18 +8,17 @@ export const displayFacilitiesButton = () => {
     `
 }
 
-const eventHub = document.querySelector(".container")
 
-eventHub.addEventListener("click", (clickEvent) => {
-    if (clickEvent.target.id === "facility__button") {
-        // console.log("witness button was clicked")
-    
-    
-    const facilityButton = new CustomEvent("facilitiesButtonClicked")
-    
+eventHub.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id === "displayFacility") {
+        
+        
+        const facilityButton = new CustomEvent("facilitiesButtonClicked")
+        
         eventHub.dispatchEvent(facilityButton)
     }
     
+    console.log("facility button was clicked", clickEvent)
     
     })
 

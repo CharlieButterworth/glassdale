@@ -4,8 +4,14 @@ import { useCriminals } from "./CriminalProvider.js"
 import { Criminal } from "./Criminals.js"
 import { getFacilities, useFacilities } from "../facility/FacilityProvider.js"
 import { getCriminalFacilities, useCriminalFacilities } from "../facility/CriminalFacilityProcivder.js"
+import { FacilityList } from "../facility/FacilityList.js"
+import "../facility/Facility.js"
+import { Facility } from "../facility/Facility.js"
 
+
+const facilityHeading = document.querySelector(".facilityHeading")
 const eventHub = document.querySelector(".container")
+const facilitiesContainer = document.querySelector(".facilityContainer")
 // Listen for the custom event you dispatched in ConvictionSelect
 
     // console.log("event", changeEvent.detail.crimeThatWasChosen)
@@ -133,7 +139,22 @@ const render = (criminalsToRender, allFacilities, allRelationships) => {
 }
 
 
-eventHub.addEventListener("facilitiesButtonClicked", () => {
-    FacilityList()
+
+eventHub.addEventListener("facilitiesButtonClicked", place => {
+    
+    console.log("facility button was heard")
+
+    if (facilitiesContainer.textContent === "") {
+
+        facilityHeading.innerHTML = `<h2> Facility </h2>
+        `
+        FacilityList()
+
+    }
+    else {
+        debugger
+        facilityHeading.innerHTML = ""
+        facilityContainer.innerHTML = ""
+    }
 })
     

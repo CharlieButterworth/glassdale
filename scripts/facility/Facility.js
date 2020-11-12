@@ -1,6 +1,8 @@
-export const Facility = (place) => {
+export const Facility = (facilityObject) => {
     return `<div class="facility">
-    <h5>${place.facilityName}</h5>
+    <p>${facilityObject.facilityName}</p>
+
+    
     
   </div>
     `
