@@ -1,3 +1,4 @@
+import { getFacilities } from "../facility/FacilityProvider.js";
 import { getWitnessStatements, useWitnessStatements } from "./WitnessProvider.js"
 import { WitnessStatement } from "./WitnessStatement.js";
 

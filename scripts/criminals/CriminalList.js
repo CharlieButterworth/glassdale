@@ -4,8 +4,14 @@ import { useCriminals } from "./CriminalProvider.js"
 import { Criminal } from "./Criminals.js"
 import { getFacilities, useFacilities } from "../facility/FacilityProvider.js"
 import { getCriminalFacilities, useCriminalFacilities } from "../facility/CriminalFacilityProcivder.js"
+import { FacilityList } from "../facility/FacilityList.js"
+import "../facility/Facility.js"
+import { Facility } from "../facility/Facility.js"
 
+
+const facilityHeading = document.querySelector(".facilityHeading")
 const eventHub = document.querySelector(".container")
+const facilitiesContainer = document.querySelector(".facilityContainer")
 // Listen for the custom event you dispatched in ConvictionSelect
 
     // console.log("event", changeEvent.detail.crimeThatWasChosen)
@@ -48,21 +54,22 @@ eventHub.addEventListener("crimeSelected", event => {
         */
     //    const criminalsArray = useCriminals()
       const convictionsArray = useConvictions()
-      console.log("Convictions Array", convictionsArray)
+    //   console.log("Convictions Array", convictionsArray)
 
       const convictionThatWasChosen = convictionsArray.find(convictionObj =>  convictionObj.id === parseInt(event.detail.crimeThatWasChosen))
           
-        console.log(convictionThatWasChosen)
-
-    
-
+        // console.log(convictionThatWasChosen)
         // Filtering through the criminals array
         const criminalsArray = useCriminals()
+        
 const filteredCriminalsArray = criminalsArray.filter(criminalObj => {
     
     return criminalObj.conviction === convictionThatWasChosen.name
 })
-    render(filteredCriminalsArray)
+    const fullFacilityArray = useFacilities()
+    const relationshipFullTable = useCriminalFacilities()
+
+    render(filteredCriminalsArray, fullFacilityArray, relationshipFullTable)
 
     }
 
@@ -70,10 +77,10 @@ const filteredCriminalsArray = criminalsArray.filter(criminalObj => {
 
 
 eventHub.addEventListener("officerSelected", OfficerSelectedEventObj => {
-    console.log(OfficerSelectedEventObj)
-
+    // console.log(OfficerSelectedEventObj)
+    if (OfficerSelectedEventObj.detail.crimeThatWasChosen !== 0) {
     const selectedOfficerName = OfficerSelectedEventObj.detail.officerName
-    console.log(selectedOfficerName)
+    // console.log(selectedOfficerName)
 
     const criminalsArray = useCriminals()
 
@@ -83,11 +90,15 @@ eventHub.addEventListener("officerSelected", OfficerSelectedEventObj => {
             return criminalObj.arrestingOfficer === selectedOfficerName
         }
     )
-    console.log(filteredArrayCriminals)
+    // console.log(filteredArrayCriminals)
 
+    const fullFacilityArray = useFacilities()
+    const relationshipFullTable = useCriminalFacilities()
 
-    render(filteredArrayCriminals)
+    render(filteredArrayCriminals, fullFacilityArray, relationshipFullTable)
+    }
 })
+
 
 
 // const render = (criminalArray) => {
@@ -126,4 +137,24 @@ const render = (criminalsToRender, allFacilities, allRelationships) => {
         }
     ).join("")
 }
+
+
+
+eventHub.addEventListener("facilitiesButtonClicked", place => {
+    
+    console.log("facility button was heard")
+
+    if (facilitiesContainer.textContent === "") {
+
+        facilityHeading.innerHTML = `<h2> Facility </h2>
+        `
+        FacilityList()
+
+    }
+    else {
+        debugger
+        facilityHeading.innerHTML = ""
+        facilityContainer.innerHTML = ""
+    }
+})
     
