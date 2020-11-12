@@ -41,3 +41,11 @@
     border: 1px dotted black;
     background-color: cyan;
 }
+
+.facility {
+
+    border: 1px dotted black;
+    margin: 1rem;
+    padding: 0.5rem;
+    flex-basis: 25%;  
+}

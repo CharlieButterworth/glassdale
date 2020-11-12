@@ -24,26 +24,26 @@ export const FacilityList = () => {
                 const criminals = useCriminals()
 
                 // Pass all three collections of data to render()
-                render(criminals, facilities, crimFac)
+                render(crimFac, facilities, criminals)
             }
         )
 }
 
-const render = (allRelationships, allFacilities) => {
+const render = (allRelationships, allFacilities, criminalsToRender) => {
     // Step 1 - Iterate all criminals
     facilityContainer.innerHTML = allFacilities.map(
-        (criminalObject) => {
+        (facilityObject) => {
             // Step 2 - Filter all relationships to get only ones for this criminal
-            const facilityRelationshipsForThisCriminal = allRelationships.filter(cf => cf.criminalId === criminalObject.id)
+            const facilityRelationshipsForThisCriminal = allRelationships.filter(cf => cf.facilityId === facilityObject.id)
 
             // Step 3 - Convert the relationships to facilities with map()
             const facilities = facilityRelationshipsForThisCriminal.map(cf => {
-                const matchingFacilityObject = allFacilities.find(facility => facility.id === cf.facilityId)
+                const matchingFacilityObject = criminalsToRender.find(facility => facility.id === cf.criminalId)
                 return matchingFacilityObject
             })
 
             // Must pass the matching facilities to the Criminal component
-            return Facility(criminalObject, facilities)
+            return Facility(facilityObject, facilities)
         }
     ).join("")
 }
